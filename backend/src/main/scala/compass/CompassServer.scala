@@ -10,19 +10,21 @@ import org.http4s.client.blaze.BlazeClientBuilder
 import org.http4s.implicits._
 import org.http4s.server.Router
 import org.http4s.server.blaze.BlazeServerBuilder
-
+import cats.implicits._
 import scala.concurrent.ExecutionContext.global
 
 object CompassServer {
-  def stream[F[_]: ConcurrentEffect: Concurrent](implicit T: Timer[F], C: ContextShift[F]): Stream[F, Nothing] = {
+  def stream[F[_]: ConcurrentEffect: Concurrent](
+      implicit T: Timer[F],
+      C: ContextShift[F]
+  ): Stream[F, Nothing] = {
     for {
       client <- BlazeClientBuilder[F](global).stream
 
       jokeAlg           = Jokes.impl[F](client)
       seriesProviderAlg = SeriesProvider.impl[F]
 
-      services = CompassRoutes.jokeRoutes[F](jokeAlg) <+>
-        CompassRoutes.providerRouter(seriesProviderAlg)
+      services            = CompassRoutes.jokeRoutes[F](jokeAlg)
       httpApp: HttpApp[F] = Router("/api" -> services).orNotFound
 
       // With Middlewares in place

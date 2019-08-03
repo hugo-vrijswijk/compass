@@ -39,4 +39,4 @@ module.exports = {
     chunkFilename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist')
   }
-}
+};

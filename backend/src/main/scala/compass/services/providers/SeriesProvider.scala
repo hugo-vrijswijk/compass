@@ -10,12 +10,14 @@ trait SeriesProvider[F[_]] {
 }
 
 object SeriesProvider {
-  implicit def apply[F[_]](implicit ev: SeriesProvider[F]): SeriesProvider[F] = ev
+  implicit def apply[F[_]](implicit ev: SeriesProvider[F]): SeriesProvider[F] =
+    ev
 
   def impl[F[_]: Applicative]: SeriesProvider[F] = new SeriesProvider[F] {
     override def all(): F[Seq[Series]] = Seq(Series("Game of Thrones")).pure[F]
 
-    override def one(name: String): F[Series] = Series("Game of Thrones").pure[F]
+    override def one(name: String): F[Series] =
+      Series("Game of Thrones").pure[F]
   }
 
   /**

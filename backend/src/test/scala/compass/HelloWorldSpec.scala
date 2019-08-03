@@ -12,13 +12,19 @@ object HelloWorldSpec extends SimpleTestSuite {
     assertEquals(retHelloWorld.status, Status.Ok)
   }
   test("return hello world") {
-    assertEquals(retHelloWorld.as[String].unsafeRunSync(), "{\"message\":\"Hello, world\"}")
+    assertEquals(
+      retHelloWorld.as[String].unsafeRunSync(),
+      "{\"message\":\"Hello, world\"}"
+    )
   }
 
   private[this] val retHelloWorld: Response[IO] = {
     val getHW      = Request[IO](Method.GET, uri"/hello/world")
     val helloWorld = SeriesProvider.impl[IO]
-    CompassRoutes.seriesProviderRoutes(helloWorld).orNotFound(getHW).unsafeRunSync()
+    CompassRoutes
+      .seriesProviderRoutes(helloWorld)
+      .orNotFound(getHW)
+      .unsafeRunSync()
   }
 
 }

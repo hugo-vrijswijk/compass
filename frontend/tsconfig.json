@@ -5,6 +5,13 @@
         "name": "ts-lit-plugin"
       },
     ],
+    "paths": {
+      "@/*": [
+        "src/*",
+        "lib/*"
+      ]
+    },
+    "baseUrl": ".",
     "types": [
       "webpack-env"
     ],

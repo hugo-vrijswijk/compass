@@ -4,8 +4,9 @@
   "description": "Frontend to Compass",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.prod.js",
-    "build:dev": "webpack --config webpack.dev.js",
+    "build": "npm run build:api && webpack --config webpack.prod.js",
+    "build:dev": "npm run build:api && webpack --config webpack.dev.js",
+    "build:api": "dtsgen -n \"\" --out lib/schema.d.ts ../contract/*.yaml",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "lint": "eslint 'src/**.ts'",
     "lint:fix": "eslint --fix 'src/**.ts'"
@@ -43,6 +44,7 @@
     "@typescript-eslint/parser": "^1.13.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.1.0",
+    "dtsgenerator": "^2.1.0",
     "eslint": "^6.1.0",
     "file-loader": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",

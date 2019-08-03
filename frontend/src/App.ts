@@ -1,8 +1,9 @@
 import { LitElement, html, customElement } from 'lit-element';
-
+import '@/schema';
 @customElement('compass-app')
 export class App extends LitElement {
 
+  private message: HelloResponse = { message: "" };
   render() {
     return html`
     <header>
@@ -12,7 +13,7 @@ export class App extends LitElement {
       <a href="/">Todos</a>
       <a href="/stats">Stats</a>
     </nav>
-    <main></main>`;
+    <main>${this.message.message}</main>`;
   }
 
 }

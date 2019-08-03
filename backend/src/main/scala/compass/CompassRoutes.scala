@@ -6,6 +6,8 @@ import compass.services.providers.SeriesProvider
 import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl
 import org.http4s.server.Router
+import io.circe.Encoder
+import compass.model.Api.Series
 
 object CompassRoutes {
 
@@ -25,6 +27,8 @@ object CompassRoutes {
     val dsl = new Http4sDsl[F] {}
     import dsl._
     import compass.model.Encoder._
+    import io.circe.generic.auto._
+
     HttpRoutes.of[F] {
       case GET -> Root / "series" / name =>
         for {
@@ -39,5 +43,6 @@ object CompassRoutes {
     }
   }
 
-  def providerRouter[F[_]: Sync](S: SeriesProvider[F]): HttpRoutes[F] = Router("/provider" -> seriesProviderRoutes(S))
+  def providerRouter[F[_]: Sync](S: SeriesProvider[F]): HttpRoutes[F] =
+    Router("/provider" -> seriesProviderRoutes(S))
 }
