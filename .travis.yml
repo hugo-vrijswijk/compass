@@ -1,0 +1,52 @@
+language: scala
+
+scala:
+  - 2.12.8
+
+jdk:
+  - openjdk11
+
+stages:
+  - name: test (backend)
+  - name: test (frontend)
+  - name: stryker
+    if: type = cron
+  - name: stryker4s
+    if: type = cron
+
+jobs:
+  include:
+    - stage: test (frontend)
+      script:
+      - cd frontend
+      - npm ci
+      - npm test
+    - stage: test (backend)
+      script: 
+      - cd backend
+      - sbt ++$TRAVIS_SCALA_VERSION test
+    - name: Test formatting
+      script:
+      - cd backend
+      - ./bin/scalafmt --test
+    - stage: stryker
+      script: 
+      - cd frontend
+      - npm run stryker
+    - stage: stryker4s
+      script: 
+      - cd backend 
+      - sbt stryker
+
+before_cache:
+  # Cleanup the cached directories to avoid unnecessary cache updates
+  - find $HOME/.sbt -name "*.lock" -print -delete
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
+
+cache:
+  npm: true
+  # These directories are cached to S3 at the end of the build
+  directories:
+    - $HOME/.sbt
+    - $HOME/.ivy2/cache
+    - $HOME/.cache/coursier

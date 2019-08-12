@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Frontend to Compass",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:api && webpack --config webpack.prod.js",
-    "build:dev": "npm run build:api && webpack --config webpack.dev.js",
     "build:api": "dtsgen -n \"\" --out lib/schema.d.ts ../contract/*.yaml",
+    "build:dev": "npm run build:api && webpack --config webpack.dev.js",
+    "build": "npm run build:api && webpack --config webpack.prod.js",
+    "test": "npm run build:api && echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "lint": "eslint 'src/**.ts'",
     "lint:fix": "eslint --fix 'src/**.ts'"
