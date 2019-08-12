@@ -8,18 +8,18 @@ import minitest._
 
 object HelloWorldSpec extends SimpleTestSuite {
 
-  test("HelloWorld return 200") {
+  test("SeriesProvider returns 200") {
     assertEquals(retHelloWorld.status, Status.Ok)
   }
   test("return hello world") {
     assertEquals(
       retHelloWorld.as[String].unsafeRunSync(),
-      "{\"message\":\"Hello, world\"}"
+      "[{\"series\":\"Game of Thrones\"}]"
     )
   }
 
   private[this] val retHelloWorld: Response[IO] = {
-    val getHW      = Request[IO](Method.GET, uri"/hello/world")
+    val getHW      = Request[IO](Method.GET, uri"/series")
     val helloWorld = SeriesProvider.impl[IO]
     CompassRoutes
       .seriesProviderRoutes(helloWorld)

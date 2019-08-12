@@ -7,36 +7,44 @@ jdk:
   - openjdk11
 
 stages:
-  - name: test (backend)
-  - name: test (frontend)
-  - name: stryker
-    if: type = cron
-  - name: stryker4s
+  - name: test
+  - name: release
+  - name: mutation testing
     if: type = cron
 
 jobs:
   include:
-    - stage: test (frontend)
+    - name: Test frontend
+      stage: test
       script:
       - cd frontend
       - npm ci
       - npm test
-    - stage: test (backend)
+    - name: Test backend
+      stage: test
       script: 
       - cd backend
       - sbt ++$TRAVIS_SCALA_VERSION test
-    - name: Test formatting
+    - name: Test formatting (backend)
+      stage: test
       script:
       - cd backend
       - ./bin/scalafmt --test
-    - stage: stryker
+    - stage: mutation testing
+      name: Stryker
       script: 
       - cd frontend
+      - npm ci
       - npm run stryker
-    - stage: stryker4s
+    - stage: mutation testing
+      name: Stryker4s
       script: 
       - cd backend 
       - sbt stryker
+    - name: release
+      stage: release
+      script:
+      - echo "WIP"
 
 before_cache:
   # Cleanup the cached directories to avoid unnecessary cache updates
