@@ -1,17 +1,16 @@
-val Http4sVersion           = "0.21.0-M3"
-val CirceVersion            = "0.12.0-M1"
+val Http4sVersion           = "0.20.9"
+val CirceVersion            = "0.11.1"
 val MiniTestVersion         = "2.5.0"
 val LogbackVersion          = "1.2.3"
 val KindProjectorVersion    = "0.10.3"
 val BetterMonadicForVersion = "0.3.1"
 
-val contractBase = file("../contract")
 lazy val root = (project in file("."))
   .settings(
     organization := "dev.hugovr",
-    name := "compass-backend",
+    name := "compass",
     version := "0.0.1-SNAPSHOT",
-    scalaVersion := "2.12.8",
+    scalaVersion := "2.12.9",
     libraryDependencies ++= Seq(
       "org.http4s"     %% "http4s-blaze-server" % Http4sVersion,
       "org.http4s"     %% "http4s-blaze-client" % Http4sVersion,
@@ -24,17 +23,13 @@ lazy val root = (project in file("."))
       "ch.qos.logback" % "logback-classic"      % LogbackVersion,
       "io.monix"       %% "minitest"            % MiniTestVersion % Test
     ),
-    addCompilerPlugin(
-      "org.typelevel" %% "kind-projector" % KindProjectorVersion
-    ),
-    addCompilerPlugin(
-      "com.olegpy" %% "better-monadic-for" % BetterMonadicForVersion
-    ),
+    addCompilerPlugin("org.typelevel" %% "kind-projector"     % KindProjectorVersion),
+    addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % BetterMonadicForVersion),
     testFrameworks += new TestFramework("minitest.runner.Framework"),
     guardrailTasks in Compile := List(
       ScalaServer(
-        contractBase / "server.yaml",
-        pkg = "dev.hugovr.compass.generated",
+        file("../contract/server.yaml"),
+        pkg = "compass.generated",
         framework = "http4s"
       )
     )

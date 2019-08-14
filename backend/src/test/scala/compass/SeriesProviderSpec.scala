@@ -6,24 +6,24 @@ import org.http4s._
 import org.http4s.implicits._
 import minitest._
 
-object HelloWorldSpec extends SimpleTestSuite {
+object SeriesProviderpec extends SimpleTestSuite {
 
   test("SeriesProvider returns 200") {
-    assertEquals(retHelloWorld.status, Status.Ok)
+    assertEquals(retSeries.status, Status.Ok)
   }
-  test("return hello world") {
+  test("returns Game of Thrones") {
     assertEquals(
-      retHelloWorld.as[String].unsafeRunSync(),
-      "[{\"series\":\"Game of Thrones\"}]"
+      retSeries.as[String].unsafeRunSync(),
+      "[{\"name\":\"Game of Thrones\"}]"
     )
   }
 
-  private[this] val retHelloWorld: Response[IO] = {
-    val getHW      = Request[IO](Method.GET, uri"/series")
-    val helloWorld = SeriesProvider.impl[IO]
+  private[this] val retSeries: Response[IO] = {
+    val getSeries = Request[IO](Method.GET, uri"/series")
+    val series    = SeriesProvider.impl[IO]
     CompassRoutes
-      .seriesProviderRoutes(helloWorld)
-      .orNotFound(getHW)
+      .seriesProviderRoutes(series)
+      .orNotFound(getSeries)
       .unsafeRunSync()
   }
 

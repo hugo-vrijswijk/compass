@@ -3,7 +3,7 @@ import '@/schema';
 @customElement('compass-app')
 export class App extends LitElement {
 
-  private message: HelloResponse = { message: "" };
+  private message: SeriesResponse = { name: 'Game of Thrones' };
   render() {
     return html`
     <header>
@@ -13,7 +13,7 @@ export class App extends LitElement {
       <a href="/">Todos</a>
       <a href="/stats">Stats</a>
     </nav>
-    <main>${this.message.message}</main>`;
+    <main>${this.message.name}</main>`;
   }
 
 }

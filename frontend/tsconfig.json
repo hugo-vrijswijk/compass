@@ -13,7 +13,8 @@
     },
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "jest"
     ],
     "target": "es2015",
     "module": "commonjs",

@@ -1,16 +1,17 @@
 language: scala
 
 scala:
-  - 2.12.8
+  - 2.12.9
 
 jdk:
   - openjdk11
 
 stages:
   - name: test
-  - name: release
   - name: mutation testing
     if: type = cron
+  - name: release
+    if: (branch = master AND type = push) OR (tag IS present)
 
 jobs:
   include:
@@ -44,7 +45,11 @@ jobs:
     - name: release
       stage: release
       script:
-      - echo "WIP"
+      - cd frontend
+      - npm ci
+      - npm run build
+      - cd ../backend
+      - sbt ci-release
 
 before_cache:
   # Cleanup the cached directories to avoid unnecessary cache updates
@@ -58,3 +63,7 @@ cache:
     - $HOME/.sbt
     - $HOME/.ivy2/cache
     - $HOME/.cache/coursier
+
+before_install:
+  # Ensure that git tags are always fetched so that sbt-dynver can pick up the correct version
+  - git fetch --tags
