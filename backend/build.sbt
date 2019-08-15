@@ -9,7 +9,6 @@ lazy val root = (project in file("."))
   .settings(
     organization := "dev.hugovr",
     name := "compass",
-    version := "0.0.1-SNAPSHOT",
     scalaVersion := "2.12.9",
     libraryDependencies ++= Seq(
       "org.http4s"     %% "http4s-blaze-server" % Http4sVersion,
@@ -41,4 +40,20 @@ scalacOptions ++= Seq(
   "-language:higherKinds",
   "-language:postfixOps",
   "-feature"
+)
+
+inThisBuild(
+  List(
+    organization := "dev.hugovr",
+    homepage := Some(url("https://github.com/hugo-vrijswijk/compass")),
+    licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
+    developers := List(
+      Developer(
+        "hugo-vrijswijk",
+        "Hugo van Rijswijk",
+        "hugo.v.rijswijk@gmail.com",
+        url("https://github.com/hugo-vrijswijk")
+      )
+    )
+  )
 )
