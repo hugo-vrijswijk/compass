@@ -1,5 +1,4 @@
 addSbtPlugin("io.spray"           % "sbt-revolver"   % "0.9.1")
-addSbtPlugin("com.twilio"         % "sbt-guardrail"  % "0.52.1")
+addSbtPlugin("com.twilio"         % "sbt-guardrail"  % "0.54.0")
 addSbtPlugin("io.stryker-mutator" % "sbt-stryker4s"  % "0.6.1")
-addSbtPlugin("com.geirsson"       % "sbt-ci-release" % "1.2.6")
-addSbtPlugin("com.eed3si9n"       % "sbt-assembly"   % "0.14.10")
+addSbtPlugin("com.geirsson"       % "sbt-ci-release" % "1.4.31")
