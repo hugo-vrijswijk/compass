@@ -1,5 +1,5 @@
 val Http4sVersion           = "0.21.0-M4"
-val CirceVersion            = "0.12.2"
+val CirceVersion            = "0.12.3"
 val MiniTestVersion         = "2.7.0"
 val LogbackVersion          = "1.2.3"
 val KindProjectorVersion    = "0.11.0"

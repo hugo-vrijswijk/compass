@@ -12,7 +12,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Compass'
+      title: 'Compass',
+      minify: {
+        collapseWhitespace: true
+      }
     })
   ],
   module: {
@@ -20,7 +23,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         include: path.resolve(__dirname, 'src'),
-        loader: 'ts-loader',
+        loader: 'ts-loader'
       },
       {
         test: /\.(png|svg|jpg|gif)$/,

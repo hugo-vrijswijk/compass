@@ -11,30 +11,21 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
-      chunkFilename: '[name].[hash].css',
+      chunkFilename: '[name].[hash].css'
     }),
     new OptimizeCssAssetsPlugin(),
     new WorkboxPlugin.GenerateSW({
       importWorkboxFrom: 'local',
       cleanupOutdatedCaches: true,
       exclude: ['index.html', /\.map$/, /^manifest.*\.js$/, /^api\//]
-    }),
+    })
   ],
   module: {
     rules: [
       {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader', // translates CSS into CommonJS
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('sass')
-            }
-          }
-        ]
-      },
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
+      }
     ]
   },
   optimization: {

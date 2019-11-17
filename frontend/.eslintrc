@@ -4,22 +4,19 @@
     "browser": true
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "extends": [
+    "plugin:prettier/recommended",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "parserOptions": {
-    "project": "./tsconfig.json",
+    "project": "./tsconfig.json"
   },
   "rules": {
-    "@typescript-eslint/indent": [
-      "error",
-      2
-    ],
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
       {
@@ -35,9 +32,6 @@
       }
     ],
     "semi": "off",
-    "@typescript-eslint/semi": [
-      "error",
-      "always"
-    ]
-  },
+    "@typescript-eslint/semi": ["error", "always"]
+  }
 }

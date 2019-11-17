@@ -3,20 +3,14 @@
     "plugins": [
       {
         "name": "ts-lit-plugin"
-      },
+      }
     ],
     "paths": {
-      "@/*": [
-        "src/*",
-        "lib/*"
-      ]
+      "@/*": ["src/*", "lib/*"]
     },
     "baseUrl": ".",
-    "types": [
-      "webpack-env",
-      "jest"
-    ],
-    "target": "es2015",
+    "types": ["webpack-env", "jest"],
+    "target": "esnext",
     "module": "commonjs",
     "outDir": "./dist/",
     "noImplicitAny": true,
@@ -27,6 +21,6 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "strict": true,
+    "strict": true
   }
 }

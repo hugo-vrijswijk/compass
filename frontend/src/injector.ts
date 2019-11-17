@@ -1,8 +1,5 @@
 import { rootInjector } from 'typed-inject';
-import { Home } from './Home';
 
-
-const appInjector = rootInjector
-  .provideClass('home', Home);
+const appInjector = rootInjector;
 
 export default appInjector;
