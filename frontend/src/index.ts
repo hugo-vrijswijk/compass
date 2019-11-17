@@ -1,5 +1,5 @@
 import { setupServiceWorker } from './sw';
-import './views/todo-view';
+import './app';
 
-document.body.appendChild(document.createElement('todo-view'));
+document.body.appendChild(document.createElement('compass-app'));
 setupServiceWorker();

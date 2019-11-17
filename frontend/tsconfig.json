@@ -1,17 +1,9 @@
 {
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "ts-lit-plugin"
-      }
-    ],
-    "paths": {
-      "@/*": ["src/*", "lib/*"]
-    },
-    "baseUrl": ".",
+    "plugins": [{ "name": "ts-lit-plugin" }],
     "types": ["webpack-env", "jest"],
-    "target": "esnext",
     "module": "commonjs",
+    "target": "esnext",
     "outDir": "./dist/",
     "noImplicitAny": true,
     "sourceMap": true,
@@ -21,6 +13,7 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true
   }
 }
