@@ -15,7 +15,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: \
+    - run: |
         cd frontend
         npm ci
         npm run lint
@@ -31,7 +31,9 @@ jobs:
       with:
         java-version: 'openjdk@1.11'
     - name: Run tests
-      run: cd backend && csbt test
+      run: |
+        cd backend
+        csbt test
   formatting:
     name: Test formatting
     runs-on: ubuntu-latest
@@ -41,4 +43,6 @@ jobs:
         with:
           java-version: 11
       - name: Test formatting
-        run: cd backend && ./bin/scalafmt --test
+        run: |
+          cd backend
+          ./bin/scalafmt --test
