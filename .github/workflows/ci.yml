@@ -15,11 +15,11 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: cd frontend
-    - run: npm ci
-    - run: npm run lint
-    - name: Run tests
-      run: npm test
+    - run: \
+        cd frontend
+        npm ci
+        npm run lint
+        npm test
       
   test-backend:
     name: Test backend
