@@ -1,0 +1,40 @@
+name: Mutation testing
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Run Stryker
+        run: |
+          cd frontend
+          npm ci
+          npm run stryker
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - uses: olafurpg/setup-scala@v5
+        with:
+          java-version: 'openjdk@1.11'
+      - name: Run Stryker4s
+        run: |
+          cd backend
+          csbt stryker
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}

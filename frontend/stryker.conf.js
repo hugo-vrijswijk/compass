@@ -1,8 +1,8 @@
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     mutator: 'typescript',
     packageManager: 'npm',
-    reporters: ['html', 'clear-text', 'progress'],
+    reporters: ['html', 'clear-text', 'progress', 'dashboard'],
     testRunner: 'jest',
     transpilers: ['typescript'],
     coverageAnalysis: 'off',
@@ -13,5 +13,9 @@ module.exports = function(config) {
       config: require('./jest.config.js'),
       enableFindRelatedTests: true,
     },
+    dashboard: {
+      module: 'frontend',
+      reportType: 'full'
+    }
   });
 };
