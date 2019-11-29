@@ -20,11 +20,6 @@ jobs:
           npm run stryker
         env:
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
-      - name: Upload HTML report artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: 'frontend-html-report'
-          path: 'frontend/reports/mutation/html'
 
   backend:
     runs-on: ubuntu-latest
@@ -40,8 +35,3 @@ jobs:
           csbt stryker
         env:
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
-      - name: Upload HTML report artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: 'backend-html-report'
-          path: 'backend/target/stryker4s-report-*'
