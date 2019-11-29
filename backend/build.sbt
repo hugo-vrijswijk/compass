@@ -33,7 +33,8 @@ lazy val root = (project in file("."))
         modules = List("http4s", "circe")
       )
     ),
-    graalVMNativeImageGraalVersion := Some("19.3.0-java11") // Build from docker
+    graalVMNativeImageGraalVersion := Some("19.3.0-java11"), // Build from docker
+    graalVMNativeImageOptions := Seq("-H:+ReportExceptionStackTraces", "--no-fallback")
   )
 
 scalacOptions ++= Seq(
