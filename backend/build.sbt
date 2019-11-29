@@ -34,7 +34,11 @@ lazy val root = (project in file("."))
       )
     ),
     graalVMNativeImageGraalVersion := Some("19.3.0-java11"), // Build from docker
-    graalVMNativeImageOptions := Seq("-H:+ReportExceptionStackTraces", "--no-fallback")
+    graalVMNativeImageOptions := Seq(
+      "-H:+ReportExceptionStackTraces",
+      "--no-fallback",
+      "--initialize-at-build-time=ch.qos.logback,org.slf4j"
+    )
   )
 
 scalacOptions ++= Seq(
