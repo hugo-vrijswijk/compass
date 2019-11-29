@@ -6,6 +6,7 @@ val KindProjectorVersion    = "0.11.0"
 val BetterMonadicForVersion = "0.3.1"
 
 lazy val root = (project in file("."))
+  .enablePlugins(GraalVMNativeImagePlugin)
   .settings(
     organization := "dev.hugovr",
     name := "compass",
@@ -31,6 +32,14 @@ lazy val root = (project in file("."))
         framework = "http4s",
         modules = List("http4s", "circe")
       )
+    ),
+    graalVMNativeImageGraalVersion := Some("19.3.0-java11"), // Build from docker
+    graalVMNativeImageOptions := Seq(
+      "-H:+ReportExceptionStackTraces",
+      "--report-unsupported-elements-at-runtime",
+      "--allow-incomplete-classpath",
+      "--no-fallback",
+      "--initialize-at-build-time=ch.qos.logback,org.slf4j,scala.Function4,scala.Symbol"
     )
   )
 

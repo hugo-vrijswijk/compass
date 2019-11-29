@@ -46,3 +46,15 @@ jobs:
         run: |
           cd backend
           ./bin/scalafmt --test
+  build-docker:
+    name: Build docker image
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: olafurpg/setup-scala@v5
+      with:
+        java-version: 'openjdk@1.11'
+    - name: Build docker image
+      run: |
+        cd backend
+        csbt graalvm-native-image:packageBin
