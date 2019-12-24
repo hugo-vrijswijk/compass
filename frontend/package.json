@@ -28,7 +28,7 @@
     "lit-element": "^2.2.1",
     "nanoid": "^2.1.8",
     "pwa-helpers": "^0.9.1",
-    "redux": "^4.0.4",
+    "redux": "^4.0.5",
     "reselect": "^4.0.0",
     "typed-inject": "^2.1.0"
   },
