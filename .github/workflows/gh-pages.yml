@@ -15,7 +15,14 @@ jobs:
       - uses: olafurpg/setup-scala@v5
         with:
           java-version: "openjdk@1.11"
-      - name: Run tests
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.x"
+      - name: Install Ruby dependencies
+        run: |
+          gem install sass
+          gem install jekyll -v 4.0.0
+      - name: Publish GitHub pages
         run: |
           cd backend
           csbt docs/publishMicrosite
