@@ -53,7 +53,7 @@ lazy val docs = (project in file("docs"))
     micrositeGitterChannel := true,
     micrositeShareOnSocial := true,
     micrositePushSiteWith := GitHub4s,
-    micrositeGithubToken := sys.env.get("GITHUB_TOKEN")
+    micrositeGithubToken := sys.env.get("GH_PAGES_DEPLOY_TOKEN")
   )
   .enablePlugins(MicrositesPlugin)
 

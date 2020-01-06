@@ -20,11 +20,11 @@ jobs:
           ruby-version: "2.x"
       - name: Install Ruby dependencies
         run: |
-          gem install sass
+          gem install sassc
           gem install jekyll -v 4.0.0
       - name: Publish GitHub pages
         run: |
           cd backend
           csbt docs/publishMicrosite
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PAGES_DEPLOY_TOKEN: ${{ secrets.GH_PAGES_DEPLOY_TOKEN }}
