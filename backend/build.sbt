@@ -24,6 +24,14 @@ lazy val root = (project in file("."))
     addCompilerPlugin("org.typelevel" %% "kind-projector"     % KindProjectorVersion cross CrossVersion.full),
     addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % BetterMonadicForVersion),
     testFrameworks += new TestFramework("minitest.runner.Framework"),
+    scalacOptions ++= Seq(
+      "-encoding",
+      "UTF-8",
+      "-language:higherKinds",
+      "-language:postfixOps",
+      "-feature",
+      "-deprecation"
+    ),
     guardrailTasks in Compile := List(
       ScalaServer(
         file("../contract/server.yaml"),
@@ -34,19 +42,25 @@ lazy val root = (project in file("."))
     )
   )
 
-scalacOptions ++= Seq(
-  "-encoding",
-  "UTF-8",
-  "-language:higherKinds",
-  "-language:postfixOps",
-  "-feature",
-  "-deprecation"
-)
+lazy val docs = (project in file("docs"))
+  .settings(
+    micrositeGithubOwner := "hugo-vrijswijk",
+    micrositeGithubRepo := "compass",
+    micrositeUrl := s"https://${micrositeGithubOwner.value}.github.io",
+    micrositeBaseUrl := s"/${micrositeGithubRepo.value}",
+    micrositeDocumentationUrl := s"${micrositeBaseUrl.value}/docs",
+    micrositeAnalyticsToken := "UA-155360939-1",
+    micrositeGitterChannel := true,
+    micrositeShareOnSocial := true,
+    micrositePushSiteWith := GitHub4s,
+    micrositeGithubToken := sys.env.get("GITHUB_TOKEN")
+  )
+  .enablePlugins(MicrositesPlugin)
 
 inThisBuild(
   List(
     organization := "dev.hugovr",
-    homepage := Some(url("https://github.com/hugo-vrijswijk/compass")),
+    homepage := Some(url("https://hugo-vrijswijk.github.com/compass")),
     licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
     developers := List(
       Developer(
@@ -54,6 +68,13 @@ inThisBuild(
         "Hugo van Rijswijk",
         "hugo.v.rijswijk@gmail.com",
         url("https://github.com/hugo-vrijswijk")
+      )
+    ),
+    scmInfo := Some(
+      ScmInfo(
+        url("https://github.com/hugo-vrijswijk/compass"),
+        "scm:git:https://github.com/hugo-vrijswijk/compass.git",
+        "scm:git:git@github.com:hugo-vrijswijk/compass.git"
       )
     )
   )

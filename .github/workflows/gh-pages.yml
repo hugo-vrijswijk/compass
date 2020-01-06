@@ -1,0 +1,23 @@
+name: Publish GitHub pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish-gh-pages:
+    name: Publish GitHub pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: olafurpg/setup-scala@v5
+        with:
+          java-version: "openjdk@1.11"
+      - name: Run tests
+        run: |
+          cd backend
+          csbt docs/publishMicroSite
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
