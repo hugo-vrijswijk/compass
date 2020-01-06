@@ -23,8 +23,8 @@ jobs:
           mkdir ~/.ssh
           echo "${{ secrets.GITHUB_DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
           git config --global push.default simple
       - name: Install Ruby dependencies
         run: |
