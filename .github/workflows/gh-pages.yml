@@ -20,6 +20,7 @@ jobs:
           ruby-version: "2.x"
       - name: Setup git env
         run: |
+          mkdir ~/.ssh
           echo "${{ secrets.GITHUB_DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           git config --local user.email "action@github.com"
