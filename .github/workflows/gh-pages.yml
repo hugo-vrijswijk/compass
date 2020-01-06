@@ -18,6 +18,13 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: "2.x"
+      - name: Setup git env
+        run: |
+          echo "${{ secrets.GITHUB_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git config --global push.default simple
       - name: Install Ruby dependencies
         run: |
           gem install sassc
@@ -26,5 +33,3 @@ jobs:
         run: |
           cd backend
           csbt docs/publishMicrosite
-        env:
-          GH_PAGES_DEPLOY_TOKEN: ${{ secrets.GH_PAGES_DEPLOY_TOKEN }}

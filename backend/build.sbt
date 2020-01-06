@@ -50,10 +50,8 @@ lazy val docs = (project in file("docs"))
     micrositeBaseUrl := s"/${micrositeGithubRepo.value}",
     micrositeDocumentationUrl := s"${micrositeBaseUrl.value}/docs",
     micrositeAnalyticsToken := "UA-155360939-1",
-    micrositeGitterChannel := true,
-    micrositeShareOnSocial := true,
-    micrositePushSiteWith := GitHub4s,
-    micrositeGithubToken := sys.env.get("GH_PAGES_DEPLOY_TOKEN")
+    micrositeGitterChannel := false,
+    micrositeShareOnSocial := false,
   )
   .enablePlugins(MicrositesPlugin)
 
