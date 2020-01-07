@@ -51,7 +51,7 @@ lazy val docs = (project in file("docs"))
     micrositeDocumentationUrl := s"${micrositeBaseUrl.value}/docs",
     micrositeAnalyticsToken := "UA-155360939-1",
     micrositeGitterChannel := false,
-    micrositeShareOnSocial := false,
+    micrositeShareOnSocial := false
   )
   .enablePlugins(MicrositesPlugin)
 
