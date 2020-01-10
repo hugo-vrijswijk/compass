@@ -44,11 +44,13 @@ lazy val root = (project in file("."))
 
 lazy val docs = (project in file("docs"))
   .settings(
+    micrositeName := "Compass",
+    micrositeDescription := "Manage all your media downloads in one",
     micrositeGithubOwner := "hugo-vrijswijk",
     micrositeGithubRepo := "compass",
     micrositeUrl := s"https://${micrositeGithubOwner.value}.github.io",
-    micrositeBaseUrl := s"/${micrositeGithubRepo.value}",
-    micrositeDocumentationUrl := s"${micrositeBaseUrl.value}/docs",
+    micrositeBaseUrl := micrositeGithubRepo.value,
+    micrositeDocumentationUrl := "docs",
     micrositeAnalyticsToken := "UA-155360939-1",
     micrositeGitterChannel := false,
     micrositeShareOnSocial := false
