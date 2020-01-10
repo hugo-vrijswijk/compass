@@ -44,6 +44,7 @@ lazy val root = (project in file("."))
 
 lazy val docs = (project in file("docs"))
   .settings(
+    skip in publish := true,
     micrositeName := "Compass",
     micrositeDescription := "Manage all your media downloads in one",
     micrositeGithubOwner := "hugo-vrijswijk",
