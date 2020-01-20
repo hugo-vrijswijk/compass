@@ -23,6 +23,11 @@ module.exports = {
           position: 'right',
         },
       ],
+      algolia: {
+        apiKey: 'api-key',
+        indexName: 'compass',
+        algoliaOptions: {},
+      },
     },
     footer: {
       style: 'dark',

@@ -1,21 +1,21 @@
 {
-	"folders": [
-		{
-			"path": "frontend"
-		},
-		{
-			"path": "backend"
-		},
-		{
-			"path": "contract"
-		},
-		{
-			"path": "website"
-		},
-		{
-			"path": ".",
-			"name": "parent"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "frontend"
+    },
+    {
+      "path": "backend"
+    },
+    {
+      "path": "contract"
+    },
+    {
+      "path": "website"
+    },
+    {
+      "path": ".",
+      "name": "parent"
+    }
+  ],
+  "settings": {}
 }
