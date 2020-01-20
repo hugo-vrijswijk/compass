@@ -24,8 +24,8 @@ module.exports = {
         },
       ],
       algolia: {
-        apiKey: 'api-key',
-        indexName: 'compass',
+        apiKey: 'abee8c9b5a5ad09c8a05148f7566ed0e',
+        indexName: 'compass-docs',
         algoliaOptions: {},
       },
     },
