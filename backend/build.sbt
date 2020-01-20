@@ -42,22 +42,6 @@ lazy val root = (project in file("."))
     )
   )
 
-lazy val docs = (project in file("docs"))
-  .settings(
-    skip in publish := true,
-    micrositeName := "Compass",
-    micrositeDescription := "Manage all your media downloads in one",
-    micrositeGithubOwner := "hugo-vrijswijk",
-    micrositeGithubRepo := "compass",
-    micrositeUrl := s"https://${micrositeGithubOwner.value}.github.io",
-    micrositeBaseUrl := micrositeGithubRepo.value,
-    micrositeDocumentationUrl := "docs",
-    micrositeAnalyticsToken := "UA-155360939-1",
-    micrositeGitterChannel := false,
-    micrositeShareOnSocial := false
-  )
-  .enablePlugins(MicrositesPlugin)
-
 inThisBuild(
   List(
     organization := "dev.hugovr",

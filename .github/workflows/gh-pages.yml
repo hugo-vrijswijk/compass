@@ -12,12 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: olafurpg/setup-scala@v5
+      - uses: actions/setup-node@v1
         with:
-          java-version: "openjdk@1.11"
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: "2.x"
+          node-version: '12.x'
       - name: Setup git env
         run: |
           mkdir ~/.ssh
@@ -26,11 +23,8 @@ jobs:
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git config --global push.default simple
-      - name: Install Ruby dependencies
-        run: |
-          gem install sassc
-          gem install jekyll -v 4.0.0
       - name: Publish GitHub pages
         run: |
-          cd backend
-          csbt docs/publishMicrosite
+          cd website
+          npm ci
+          GIT_USER=$GITHUB_ACTOR USE_SSH=true npm run deploy

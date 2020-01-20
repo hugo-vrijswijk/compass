@@ -8,6 +8,13 @@
 		},
 		{
 			"path": "contract"
+		},
+		{
+			"path": "website"
+		},
+		{
+			"path": ".",
+			"name": "parent"
 		}
 	],
 	"settings": {}
