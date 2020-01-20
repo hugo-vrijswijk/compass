@@ -26,5 +26,5 @@ jobs:
       - name: Publish GitHub pages
         run: |
           cd website
-          npm install
-          GIT_USER=$GITHUB_ACTOR USE_SSH=true npm run deploy
+          npm ci
+          GIT_USER=hugo-vrijswijk USE_SSH=true npm run deploy
