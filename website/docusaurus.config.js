@@ -6,19 +6,18 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'hugo-vrijswijk',
   projectName: 'compass',
-  // gaTrackingId: 'UA-155360939-1',
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'Compass',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Compass Logo',
         src: 'img/logo.svg',
       },
       links: [
         { to: 'docs/doc1', label: 'Docs', position: 'left' },
         { to: 'blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/hugo-vrijswijk/compass',
           label: 'GitHub',
           position: 'right',
         },
@@ -76,7 +75,9 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+    },
+    googleAnalytics: {
+      trackingID: 'UA-155360939-1',
     },
   },
   presets: [
@@ -86,7 +87,8 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/hugo-vrijswijk/compass/tree/master/website/',
+          showLastUpdateTime: true,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
