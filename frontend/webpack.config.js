@@ -1,3 +1,4 @@
+// @ts-check
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-undef */
 const path = require('path');
@@ -5,6 +6,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { ProgressPlugin } = require('webpack');
 
+/**
+ * @typedef {import('webpack').Configuration} Configuration
+ * @type {Configuration}
+ */
 module.exports = {
   entry: './src/index.ts',
   resolve: {

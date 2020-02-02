@@ -1,3 +1,4 @@
+// @ts-check
 const merge = require('webpack-merge');
 const common = require('./webpack.config.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -13,8 +14,6 @@ module.exports = merge(common, {
     }),
     new OptimizeCssAssetsPlugin(),
     new WorkboxPlugin.GenerateSW({
-      importWorkboxFrom: 'local',
-      cleanupOutdatedCaches: true,
       exclude: [/\.map$/, /^api\//],
     }),
   ],
