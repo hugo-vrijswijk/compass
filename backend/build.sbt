@@ -1,6 +1,6 @@
-val Http4sVersion           = "0.21.0-M6"
+val Http4sVersion           = "0.21.0-RC2"
 val CirceVersion            = "0.12.3"
-val MiniTestVersion         = "2.7.0"
+val MUnitVersion            = "0.4.3"
 val LogbackVersion          = "1.2.3"
 val KindProjectorVersion    = "0.11.0"
 val BetterMonadicForVersion = "0.3.1"
@@ -19,27 +19,11 @@ lazy val root = (project in file("."))
       "io.circe"       %% "circe-generic"       % CirceVersion,
       "io.circe"       %% "circe-parser"        % CirceVersion,
       "ch.qos.logback" % "logback-classic"      % LogbackVersion,
-      "io.monix"       %% "minitest"            % MiniTestVersion % Test
+      "org.scalameta"  %% "munit"               % MUnitVersion % Test
     ),
     addCompilerPlugin("org.typelevel" %% "kind-projector"     % KindProjectorVersion cross CrossVersion.full),
     addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % BetterMonadicForVersion),
-    testFrameworks += new TestFramework("minitest.runner.Framework"),
-    scalacOptions ++= Seq(
-      "-encoding",
-      "UTF-8",
-      "-language:higherKinds",
-      "-language:postfixOps",
-      "-feature",
-      "-deprecation"
-    ),
-    guardrailTasks in Compile := List(
-      ScalaServer(
-        file("../contract/server.yaml"),
-        pkg = "compass.generated",
-        framework = "http4s",
-        modules = List("http4s", "circe")
-      )
-    )
+    testFrameworks := List(new TestFramework("munit.Framework"))
   )
 
 inThisBuild(
