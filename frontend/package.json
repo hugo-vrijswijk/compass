@@ -30,7 +30,7 @@
     "pwa-helpers": "^0.9.1",
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
-    "typed-inject": "^2.1.0"
+    "typed-inject": "^2.2.1"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.1.0",
