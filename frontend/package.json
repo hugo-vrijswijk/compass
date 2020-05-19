@@ -49,7 +49,7 @@
     "@types/webpack-merge": "^4.1.5",
     "@types/workbox-webpack-plugin": "^5.1.1",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.33.0",
+    "@typescript-eslint/parser": "^2.34.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
     "dtsgenerator": "^2.6.0",
