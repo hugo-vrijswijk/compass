@@ -68,7 +68,7 @@
     "prettier": "^1.19.1",
     "style-loader": "^1.2.1",
     "ts-jest": "^25.5.1",
-    "ts-lit-plugin": "^1.1.10",
+    "ts-lit-plugin": "^1.1.11",
     "ts-loader": "^7.0.4",
     "typescript": "^3.9.3",
     "webpack": "^4.43.0",
