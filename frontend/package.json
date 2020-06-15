@@ -26,7 +26,7 @@
   "dependencies": {
     "@vaadin/router": "^1.7.2",
     "lit-element": "^2.3.1",
-    "nanoid": "^3.1.9",
+    "nanoid": "^3.1.10",
     "pwa-helpers": "^0.9.1",
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
